@@ -1,0 +1,6 @@
+{
+  "name": "办公用品ERP管理系统",
+  "description": "一个支持自动盘点、库存优化和领用审批的办公用品管理系统。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["库存管理", "自动盘点", "领用审批"]
+}

@@ -1,0 +1,44 @@
+{
+  "entities": {
+    "Item": {
+      "title": "物品",
+      "description": "办公用品项目",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "物品名称" },
+        "category": { "type": "string", "description": "类别" },
+        "stock": { "type": "number", "description": "当前库存" },
+        "minStock": { "type": "number", "description": "最低库存阈值" },
+        "unit": { "type": "string", "description": "单位（如：本、支、个）" },
+        "price": { "type": "number", "description": "单价" },
+        "lastRestockDate": { "type": "string", "format": "date-time", "description": "上次补货时间" }
+      },
+      "required": ["name", "category", "stock", "minStock", "unit"]
+    },
+    "Request": {
+      "title": "领用申请",
+      "description": "员工领用办公用品的申请记录",
+      "type": "object",
+      "properties": {
+        "itemId": { "type": "string", "description": "物品ID" },
+        "userId": { "type": "string", "description": "申请人ID" },
+        "userName": { "type": "string", "description": "申请人姓名" },
+        "quantity": { "type": "number", "description": "领用数量" },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"], "description": "申请状态" },
+        "requestDate": { "type": "string", "format": "date-time", "description": "申请日期" },
+        "approvalDate": { "type": "string", "format": "date-time", "description": "审批日期" }
+      },
+      "required": ["itemId", "userId", "quantity", "status", "requestDate"]
+    }
+  },
+  "firestore": {
+    "/items": {
+      "schema": "Item",
+      "description": "办公用品目录"
+    },
+    "/requests": {
+      "schema": "Request",
+      "description": "领用请求流"
+    }
+  }
+}
